@@ -9,6 +9,7 @@ namespace SogetiTestFramework
         [TestMethod]
         public void TestMethod1()
         {
+            //test
         }
     }
 }
