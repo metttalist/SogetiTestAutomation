@@ -8,5 +8,6 @@ namespace SogetiTestFramework.Utility
 {
     class Parse
     {
+
     }
 }
