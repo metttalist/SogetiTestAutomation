@@ -23,6 +23,11 @@ This is a test automation framework to be used as a base for creating a test aut
 3.  The results will be displayed in a dashboard widget. 
 
 # Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+1.  If you want to Contribute please create a branch with your changes and create a pull request.  
+    Please add the following reviewers to your pull request:
+        - Jeffrey.Bertram@us.sogeti.com
+        - Chris.Macgowan@us.sogeti.com
+        - Igor.Khorev@us.sogeti.com
+        - Albert.Arulanandasamy@us.sogeti.com
 
 
