@@ -10,7 +10,6 @@ This is a test automation framework to be used as a base for creating a test aut
         b.	Enter: $ git remote set-url origin https://{VSTS}.visualstudio.com/_git/{VSTS project}
         c.	Enter: $ git push –u origin master
                     
-
     - Go to your VSTS project and verify the SogetiTestSolution solution is in your VSTS project.
  
 2.	Software dependencies:
@@ -19,12 +18,11 @@ This is a test automation framework to be used as a base for creating a test aut
 4.	
 
 # Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+1.  Use Visual Studio to build the solution with your application projects.
+2.  Use Nunit in your application automated tests.  The tests can be used running Visual Studio.
+3.  The results will be displayed in a dashboard widget. 
 
 # Contribute
 TODO: Explain how other users and developers can contribute to make your code better. 
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
