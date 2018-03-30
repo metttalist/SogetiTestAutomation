@@ -14,7 +14,12 @@ This is a test automation framework to be used as a base for creating a test aut
  
 2.	Software dependencies:
     - MSDN license for Visual Studio
-3.	Latest releases:
+3.	Latest releases
+    - Release 1.0:
+        a. Created basic folder stucture.
+        b. Soft Asserts.
+        c. RestSharp reference.
+        d. Web Driver reference.
 4.	
 
 # Build and Test
