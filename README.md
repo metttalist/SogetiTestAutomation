@@ -20,7 +20,7 @@ This is a test automation framework to be used as a base for creating a test aut
         b. Soft Asserts.
         c. RestSharp reference.
         d. Web Driver reference.	
-
+ 
 # Build and Test
 1.  Use Visual Studio to build the solution with your application projects.
 2.  Use Nunit in your application automated tests.  The tests can be used running Visual Studio.
