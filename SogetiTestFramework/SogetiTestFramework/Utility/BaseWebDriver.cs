@@ -27,7 +27,7 @@ namespace SogetiTestFramework.Utility
     /// implement Chrome, IE and other drivers when we implement the PropertiesManager 
     /// and TestConfiguration supporting classes. 
     /// </remarks>
-    class BaseWebDriver
+    public class BaseWebDriver
     {
         
         // The following objects are used to support the BaseWebDriver object

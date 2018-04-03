@@ -20,7 +20,7 @@ namespace SogetiTestFramework.Page
     /// Confidential information of Capgemini. Disclosure, Use or Reproduction 
     /// without the written authorization of Capgemini is prohibited.
     /// </copyright>
-    class BasePage
+    public class BasePage
     {
 
         // The following objects are used to support the BasePage object
