@@ -4,7 +4,11 @@ This is a test automation framework to be used as a base for creating a test aut
 # Getting Started
 1.	Installation process:
     - Install Git Bash on your laptop.  It is available in the Software Center.
-    - Clone the SogetiTestAutomation master branch from VSTS to your local computer.  You can use Visual Studio.
+    - Clone the SogetiTestAutomation master branch from VSTS to your local computer.  
+        a.  You can use Visual Studio.
+        b.  Or git
+             - $ git clone https://sogetiautomation.visualstudio.com/_git/SogetiTestAutomation 
+
     - Open Git Bash.
         a.  Navigate to the SogetiTestAutomation location.
         b.	Enter: $ git remote set-url origin https://{VSTS}.visualstudio.com/_git/{VSTS project}
