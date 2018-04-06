@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 
 namespace SogetiTestFramework.Utility
@@ -23,40 +19,58 @@ namespace SogetiTestFramework.Utility
     /// without the written authorization of Capgemini is prohibited.
     /// </copyright>
     /// <remarks>
-    /// The BaseWebDriver object will only support FirefoxDriver at this time. We will 
-    /// implement Chrome, IE and other drivers when we implement the PropertiesManager 
+    /// The BaseWebDriver object will only support ChromeDriver at this time. We will 
+    /// implement Firefox, IE and other drivers when we implement the PropertiesManager 
     /// and TestConfiguration supporting classes. 
     /// </remarks>
-    public class BaseWebDriver
+    public class BaseWebDriver 
     {
         
         // The following objects are used to support the BaseWebDriver object
         // The commented lines are placeholders for future development
 
-        protected static FirefoxDriver driver;
+        protected static IWebDriver driver;
 
         // protected PropertiesManager properties;
 
         // protected TestConfiguration config;
-        
+
         // private final static Log logger = new Log(AbstractPage.class);
 
 
         /// <summary>
         /// Default constructor. We will create the driver object. 
         /// </summary>
-        public void BasePage()
+        public BaseWebDriver()
         {
-            driver = new FirefoxDriver();
+            Init();
         }
 
         /// <summary>
-        /// Return the FirefoxDriver driver object. 
+        /// Return the WebDriver driver object. 
         /// </summary>
-        /// <returns> Return the FirefoxDriver driver object.</returns>
-        public FirefoxDriver getDriver()
+        /// <returns> Return the WebDriver driver object.</returns>
+        public IWebDriver GetDriver()
         {
             return driver;
+        }
+
+        /// <summary>
+        /// Creates a new instance of WebDriver, setsup initial settings for browser.
+        /// </summary>
+        private void Init()
+        {
+            driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(60));
+        }
+
+        /// <summary>
+        /// Quit WebDriver, closing all assosiated windows. 
+        /// </summary>
+        public void Teardown()
+        {
+            driver.Quit();
         }
     }
 }
