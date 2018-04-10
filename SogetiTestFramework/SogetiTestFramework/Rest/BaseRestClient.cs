@@ -1,93 +1,136 @@
 ﻿using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using RestSharp.Authenticators;
 using System.Net;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SogetiTestFramework.Rest
 {
-    public class BaseRestClient
-    {
-        public BaseRestClient()
-        {
-
-        }
-
-        public string GetMethod(string url)
-        {
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.GET);
-            var queryResult = client.Execute(request);
-
-            if (queryResult.ResponseStatus.Equals(HttpStatusCode.OK))
-            {
-                return queryResult.Content.ToString();
-            }
-            return string.Format("The Rest Get API failed with a status of {0}", queryResult.ResponseStatus);
-        }
-
-        public void PostMethod()
-        {
-            var client = new RestClient("http://192.168.0.1");
-            var request = new RestRequest("api/item/", Method.POST);
-            request.RequestFormat = DataFormat.Json;
-            //request.AddBody(new Item
-            //{
-            //    ItemName = someName,
-            //    Price = 19.99
-            //});
-            client.Execute(request);
-        }
-
-        public void Post2()
-        {
-            //var request = new RestRequest("resource/{id}", Method.POST);
-            //request.AddParameter("name", "value"); // adds to POST or URL querystring based on Method
-            //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
-
-            //// easily add HTTP Headers
-            //request.AddHeader("header", "value");
-
-            //// add files to upload (works with compatible verbs)
-            ////request.AddFile(path);
-
-            //// execute the request
-            //IRestResponse response = client.Execute(request);
-            //var content = response.Content; // raw content as string
-
-            //// or automatically deserialize result
-            //// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
-            //RestResponse<Person> response2 = client.Execute<Person>(request);
-            //var name = response2.Data.Name;
-
-            //// easy async support
-            //client.ExecuteAsync(request, response => 
-            //{
-            //    Console.WriteLine(response.Content);
-            //});
-
-            //// async with deserialization
-            //var asyncHandle = client.ExecuteAsync<Person>(request, response => 
-            //{
-            //    Console.WriteLine(response.Data.Name);
-            //});
-
-        }
-
     /// <summary>
     /// This class will provide REST support.
     /// </summary>
-    /// <author></author>
-    /// <date>28 Mar 2018</date>
+    /// <author>Jeff Bertram</author>
+    /// <date>April 10, 2018</date>
     /// <copyright>
     /// All rights reserved by Capgemini. Copyright © 2018 Capgemini. Proprietary and 
     /// Confidential information of Capgemini. Disclosure, Use or Reproduction 
     /// without the written authorization of Capgemini is prohibited.
     /// </copyright>
-    class BaseRestClient
+    public class BaseRestClient
     {
+        public BaseRestClient()
+        {
+        }
+
+        /// <summary>
+        ///   Given the url, username and password the request will be sent and the content will be returned
+        ///   as a string.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns>Content string</returns>
+        public string GetMethod(string url, string username, string password)
+        {
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            client.Authenticator = new SimpleAuthenticator("username", username, "password", password);
+            var queryResult = client.Execute(request);
+
+            if (queryResult.StatusCode.Equals(HttpStatusCode.OK))
+            {
+                return queryResult.Content.ToString();
+            }
+            return string.Format("The Rest Get API failed with a status of {0}", queryResult.StatusCode);
+        }
+
+        /// <summary>
+        ///   Given the url and token the request will be sent and the content will be returned
+        ///   as a string.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="token"></param>
+        /// <returns>Content string</returns>
+        public string GetMethod(string url, string token)
+        {
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("token", token);
+            var queryResult = client.Execute(request);
+
+            if (queryResult.StatusCode.Equals(HttpStatusCode.OK))
+            {
+                return queryResult.Content.ToString();
+            }
+            return string.Format("The Rest Get API failed with a status of {0}", queryResult.StatusCode);
+        }
+
+        /// <summary>
+        ///   Given the url and token the request will be sent and the data will be returned
+        ///   as a data object.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="url"></param>
+        /// <param name="token"></param>
+        /// <returns>Return the data object</returns>
+        public T GetMethod<T>(string url, string token) where T : new()
+        {
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("token", token);
+            var queryResult = client.Execute<T>(request);
+
+            if (queryResult.StatusCode.Equals(HttpStatusCode.OK))
+            {
+                return queryResult.Data;
+            }
+            return default(T);
+        }
+
+        /// <summary>
+        ///   Given the url, token and body the request will be sent and the data will be returned
+        ///   as a data object.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="url"></param>
+        /// <param name="token"></param>
+        /// <param name="body"></param>
+        /// <returns>Return the data object</returns>
+        public T PostMethod<T>(string url, string token, T body) where T : new()
+        {
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("token", token);
+            request.AddBody(body);
+            var queryResult = client.Execute<T>(request);
+
+            if (queryResult.StatusCode.Equals(HttpStatusCode.OK))
+            {
+                return queryResult.Data;
+            }
+            return default(T);
+        }
+
+        /// <summary>
+        ///   Given the url, token and body the request will be sent and the data will be returned
+        ///   as a data object.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="url"></param>
+        /// <param name="token"></param>
+        /// <param name="body"></param>
+        /// <returns>Return the data object</returns>
+        public T PutMethod<T>(string url, string token, T body) where T : new()
+        {
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.PUT);
+            request.AddHeader("token", token);
+            request.AddBody(body);
+            var queryResult = client.Execute<T>(request);
+
+            if (queryResult.StatusCode.Equals(HttpStatusCode.OK))
+            {
+                return queryResult.Data;
+            }
+            return default(T);
+        }
     }
 }
