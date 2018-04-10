@@ -16,10 +16,6 @@ namespace SogetiTestFramework.Rest
     /// </copyright>
     public class BaseRestClient
     {
-        public BaseRestClient()
-        {
-        }
-
         /// <summary>
         ///   Given the url, username and password the request will be sent and the content will be returned
         ///   as a string.
