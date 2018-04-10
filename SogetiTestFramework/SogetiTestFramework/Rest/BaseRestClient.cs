@@ -28,18 +28,18 @@ namespace SogetiTestFramework.Rest
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns>Content string</returns>
-        public string GetMethod(string url, string username, string password)
+        public string Get(string url, string username, string password)
         {
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             client.Authenticator = new SimpleAuthenticator("username", username, "password", password);
-            var queryResult = client.Execute(request);
+            var response = client.Execute(request);
 
-            if (queryResult.StatusCode.Equals(HttpStatusCode.OK))
+            if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                return queryResult.Content.ToString();
+                return response.Content.ToString();
             }
-            return string.Format("The Rest Get API failed with a status of {0}", queryResult.StatusCode);
+            return string.Format("The Rest Get API failed with a status of {0}", response.StatusCode);
         }
 
         /// <summary>
@@ -49,18 +49,18 @@ namespace SogetiTestFramework.Rest
         /// <param name="url"></param>
         /// <param name="token"></param>
         /// <returns>Content string</returns>
-        public string GetMethod(string url, string token)
+        public string Get(string url, string token)
         {
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("token", token);
-            var queryResult = client.Execute(request);
+            var response = client.Execute(request);
 
-            if (queryResult.StatusCode.Equals(HttpStatusCode.OK))
+            if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                return queryResult.Content.ToString();
+                return response.Content.ToString();
             }
-            return string.Format("The Rest Get API failed with a status of {0}", queryResult.StatusCode);
+            return string.Format("The Rest Get API failed with a status of {0}", response.StatusCode);
         }
 
         /// <summary>
@@ -71,16 +71,16 @@ namespace SogetiTestFramework.Rest
         /// <param name="url"></param>
         /// <param name="token"></param>
         /// <returns>Return the data object</returns>
-        public T GetMethod<T>(string url, string token) where T : new()
+        public T Get<T>(string url, string token) where T : new()
         {
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("token", token);
-            var queryResult = client.Execute<T>(request);
+            var response = client.Execute<T>(request);
 
-            if (queryResult.StatusCode.Equals(HttpStatusCode.OK))
+            if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                return queryResult.Data;
+                return response.Data;
             }
             return default(T);
         }
@@ -94,17 +94,17 @@ namespace SogetiTestFramework.Rest
         /// <param name="token"></param>
         /// <param name="body"></param>
         /// <returns>Return the data object</returns>
-        public T PostMethod<T>(string url, string token, T body) where T : new()
+        public T Post<T>(string url, string token, T body) where T : new()
         {
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("token", token);
             request.AddBody(body);
-            var queryResult = client.Execute<T>(request);
+            var response = client.Execute<T>(request);
 
-            if (queryResult.StatusCode.Equals(HttpStatusCode.OK))
+            if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                return queryResult.Data;
+                return response.Data;
             }
             return default(T);
         }
@@ -118,17 +118,17 @@ namespace SogetiTestFramework.Rest
         /// <param name="token"></param>
         /// <param name="body"></param>
         /// <returns>Return the data object</returns>
-        public T PutMethod<T>(string url, string token, T body) where T : new()
+        public T Put<T>(string url, string token, T body) where T : new()
         {
             var client = new RestClient(url);
             var request = new RestRequest(Method.PUT);
             request.AddHeader("token", token);
             request.AddBody(body);
-            var queryResult = client.Execute<T>(request);
+            var response = client.Execute<T>(request);
 
-            if (queryResult.StatusCode.Equals(HttpStatusCode.OK))
+            if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                return queryResult.Data;
+                return response.Data;
             }
             return default(T);
         }
