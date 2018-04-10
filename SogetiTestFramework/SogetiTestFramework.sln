@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SogetiTestFramework", "SogetiTestFramework\SogetiTestFramework.csproj", "{06CF213B-787A-4D74-97BB-067A3CC4A42A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleTestProject", "SampleTestProject\SampleTestProject.csproj", "{90A407F6-BE70-437F-AB40-9F3AD429E290}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{3BD8368C-200F-45BF-9130-0D3341FF93D1}"
 EndProject
 Global
@@ -17,10 +19,10 @@ Global
 		{06CF213B-787A-4D74-97BB-067A3CC4A42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06CF213B-787A-4D74-97BB-067A3CC4A42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06CF213B-787A-4D74-97BB-067A3CC4A42A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3BD8368C-200F-45BF-9130-0D3341FF93D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BD8368C-200F-45BF-9130-0D3341FF93D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BD8368C-200F-45BF-9130-0D3341FF93D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BD8368C-200F-45BF-9130-0D3341FF93D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90A407F6-BE70-437F-AB40-9F3AD429E290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A407F6-BE70-437F-AB40-9F3AD429E290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A407F6-BE70-437F-AB40-9F3AD429E290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A407F6-BE70-437F-AB40-9F3AD429E290}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
