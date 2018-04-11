@@ -22,6 +22,7 @@ namespace SampleAPITestProject
         public void TestGetMethod()
         {                
             string restStatus = Get("http://services.groupkt.com/country/get/all", "", "");
+            
         }
     }
 }
