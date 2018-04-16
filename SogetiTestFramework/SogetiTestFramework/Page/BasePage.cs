@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using SogetiTestFramework.Helper;
 using SogetiTestFramework.Utility;
 using System.Collections.ObjectModel;
 
@@ -29,15 +30,16 @@ namespace SogetiTestFramework.Page
         protected BaseWebDriver webDriver = new BaseWebDriver();
         protected IWebElement element;
         protected ReadOnlyCollection<IWebElement> elements;
-        // private final static Log logger = new Log(AbstractPage.class);
+        private static readonly Log logger = new Log(typeof(BasePage));
 
-            /// <summary>
-            /// Navigates to a specified Url.
-            /// </summary>
-            /// <param name="Url"></param>
+        /// <summary>
+        /// Navigates to a specified Url.
+        /// </summary>
+        /// <param name="Url"></param>
         public void NavigateToUrl(string Url)
         {
             webDriver.GetDriver().Navigate().GoToUrl(Url);
+            logger.Debug("Navigated to: '{0}'", Url);
         }
         /// <summary>
         /// Quits the WebDriver, closing all openned windows.

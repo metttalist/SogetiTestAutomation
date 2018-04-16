@@ -1,8 +1,8 @@
 ﻿using TechTalk.SpecFlow;
 using SampleTestProject.Page;
 using OpenQA.Selenium;
-using SogetiTestFramework.Utility;
 using System.Collections.ObjectModel;
+using SogetiTestFramework.Helper;
 
 namespace SampleTestProject.StepDefinition
 {
@@ -20,6 +20,7 @@ namespace SampleTestProject.StepDefinition
     [Binding]
     public class GoogleSearchStepDefs : BaseSampleTestProjectStepDefinition
     {
+        private static readonly Log logger = new Log(typeof(GoogleSearchStepDefs));
         private GoogleSearchHomePage googleHomePage;
 
         /// <summary>
@@ -48,6 +49,7 @@ namespace SampleTestProject.StepDefinition
         {
             googleHomePage.GetSearchField().Clear();
             googleHomePage.GetSearchField().SendKeys(ItemToSearch);
+            logger.Debug("Sent the text '{0}' to the element", ItemToSearch);
         }
         /// <summary>
         /// Presses "Enter" key on a keyboard.
@@ -56,6 +58,7 @@ namespace SampleTestProject.StepDefinition
         public void PressEnterKeyWhileSearchFieldInFocus()
         {
             googleHomePage.GetSearchField().SendKeys(Keys.Enter);
+            logger.Debug("Pressed 'Enter' key on the keyboard");
         }
         /// <summary>
         /// Validates search results.
@@ -69,6 +72,7 @@ namespace SampleTestProject.StepDefinition
             foreach (var item in actualSearchResultItems)
             {
                 softAsseert.AssertThatContainsString(item.Text.ToLower(), searchedltItem.ToLower());
+                logger.Debug("Validated that '{0}' title text contains '{1}' text", item.Text, searchedltItem);
             }
             softAsseert.ProcessAsserts();
         }
