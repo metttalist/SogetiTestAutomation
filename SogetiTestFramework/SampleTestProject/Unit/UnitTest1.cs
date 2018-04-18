@@ -7,9 +7,6 @@ using SogetiTestFramework.Rest;
 namespace SampleTestProject.Unit
 {
 
-
-
-
     /// <summary>
     ///   This class can be used to test the GET api base method.
     /// </summary>
@@ -27,7 +24,7 @@ namespace SampleTestProject.Unit
         private static readonly Log logger = new Log(typeof(UnitTest1));
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestGetMethod()
         {
             logger.Debug(string.Format("Calling Test API", testConfiguration.GetApplicationURL()));
 

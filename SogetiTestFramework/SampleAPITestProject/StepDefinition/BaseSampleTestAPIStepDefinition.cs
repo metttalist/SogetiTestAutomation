@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnitTestProject.StepDefinition
+namespace SampleAPITestProject.StepDefinition
 {
     public class BaseSampleTestAPIStepDefinition : BaseStepDefinition
     {

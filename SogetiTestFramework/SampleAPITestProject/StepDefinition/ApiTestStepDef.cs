@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
 
-namespace UnitTestProject.StepDefinition
+namespace SampleAPITestProject.StepDefinition
 {
     [Binding]
     public sealed class ApiTestStepDef : BaseSampleTestAPIStepDefinition

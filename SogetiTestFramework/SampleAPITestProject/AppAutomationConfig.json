@@ -1,0 +1,20 @@
+{
+  "platform": {
+    "platformOS": "Linux",
+    "platformVersion": "12.34"
+  },
+  "browser": {
+    "browserType": "firefox",
+    "browserVersion": "22.6",
+    "browserTimeoutSeconds": "60"
+  },
+  "application": {
+    "applicationName": "General API test",
+    "applicationComment": "RESTful web-services to get and search Countries, http://www.groupkt.com",
+    "applicationURL": "http://services.groupkt.com/country/get/all"
+  },
+  "user": {
+    "userName": "jstrummer",
+    "userPassword": "dre!@juTime"
+  }
+}

@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace UnitTestProject.Feature
+namespace SampleAPITestProject.Feature
 {
     using TechTalk.SpecFlow;
     
@@ -62,7 +62,7 @@ namespace UnitTestProject.Feature
             if (((testRunner.FeatureContext != null) 
                         && (testRunner.FeatureContext.FeatureInfo.Title != "ApiTestFeature")))
             {
-                global::UnitTestProject.Feature.ApiTestFeatureFeature.FeatureSetup(null);
+                global::SampleAPITestProject.Feature.ApiTestFeatureFeature.FeatureSetup(null);
             }
         }
         

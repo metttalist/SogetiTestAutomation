@@ -1,0 +1,20 @@
+{
+  "platform": {
+    "platformOS": "Linux",
+    "platformVersion": "12.34"
+  },
+  "browser": {
+    "browserType": "chrome",
+    "browserVersion": "22.6",
+    "browserTimeoutSeconds": "60"
+  },
+  "application": {
+    "applicationName": "General UI Test - Sample Test Project",
+    "applicationComment": "UI test cases to test framework components (SampleTestProject)",
+    "applicationURL": "https://google.com"
+  },
+  "user": {
+    "userName": "jstrummer",
+    "userPassword": "dre!@juTime"
+  }
+}

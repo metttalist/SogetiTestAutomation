@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SogetiTestFramework", "Soge
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleTestProject", "SampleTestProject\SampleTestProject.csproj", "{90A407F6-BE70-437F-AB40-9F3AD429E290}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAPITestProject", "UnitTestProject\SampleAPITestProject.csproj", "{3BD8368C-200F-45BF-9130-0D3341FF93D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAPITestProject", "SampleAPITestProject\SampleAPITestProject.csproj", "{3BD8368C-200F-45BF-9130-0D3341FF93D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
