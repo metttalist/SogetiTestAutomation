@@ -21,6 +21,7 @@ namespace SampleTestProject.StepDefinition
     public class GoogleSearchStepDefs : BaseSampleTestProjectStepDefinition
     {
         private static readonly Log logger = new Log(typeof(GoogleSearchStepDefs));
+
         private GoogleSearchHomePage googleHomePage;
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace SampleTestProject.StepDefinition
         [Given(@"I navigated to Google home page")]
         public void NavigateToGoogleHomePage()
         {
-            googleHomePage.NavigateToUrl(App1BaseUrl);
+            googleHomePage.NavigateToUrl(testConfiguration.GetApplicationURL());
             DelayForNexAction(ShortIntervalInMilliseconds);
         }
         /// <summary>

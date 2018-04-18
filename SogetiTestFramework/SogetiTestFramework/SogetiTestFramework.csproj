@@ -82,6 +82,7 @@
     <Compile Include="StepDefinition\BaseStepDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\BaseWebDriver.cs" />
+    <Compile Include="Utility\ConfigurationManager.cs" />
     <Compile Include="Utility\Parse.cs" />
     <Compile Include="Utility\Globals.cs" />
     <Compile Include="Utility\BaseList.cs" />

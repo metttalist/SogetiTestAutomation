@@ -15,6 +15,9 @@ namespace SogetiTestFramework.StepDefinition
     /// </copyright>
     public class BaseStepDefinition
     {
+
+        protected TestConfiguration testConfiguration = new TestConfiguration();
+
         protected SoftAssert softAsseert = new SoftAssert();
 
         public static readonly int ShortIntervalInMilliseconds = 1000;

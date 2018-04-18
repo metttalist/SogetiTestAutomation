@@ -19,17 +19,17 @@ namespace SogetiTestFramework.Page
     /// </copyright>
     public class BasePage
     {
-
         // The following objects are used to support the BasePage object
         // The commented lines are placeholders for future development
-
-        // protected PropertiesManager properties;
-
-        // protected TestConfiguration config;
-
+        
+        protected TestConfiguration testConfiguration = new TestConfiguration();
+        
         protected BaseWebDriver webDriver = new BaseWebDriver();
+
         protected IWebElement element;
+
         protected ReadOnlyCollection<IWebElement> elements;
+
         private static readonly Log logger = new Log(typeof(BasePage));
 
         /// <summary>
@@ -41,6 +41,7 @@ namespace SogetiTestFramework.Page
             webDriver.GetDriver().Navigate().GoToUrl(Url);
             logger.Debug("Navigated to: '{0}'", Url);
         }
+
         /// <summary>
         /// Quits the WebDriver, closing all openned windows.
         /// </summary>

@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using SogetiTestFramework.Utility;
 using System.Collections.ObjectModel;
 
 namespace SampleTestProject.Page

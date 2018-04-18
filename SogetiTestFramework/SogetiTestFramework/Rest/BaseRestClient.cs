@@ -1,5 +1,9 @@
-﻿using RestSharp;
+﻿
+using RestSharp;
 using RestSharp.Authenticators;
+using SogetiTestFramework.Helper;
+using SogetiTestFramework.Utility;
+using System;
 using System.Net;
 
 namespace SogetiTestFramework.Rest
@@ -16,6 +20,12 @@ namespace SogetiTestFramework.Rest
     /// </copyright>
     public class BaseRestClient
     {
+        private static readonly Log logger = new Log(typeof(BaseRestClient));
+
+        protected TestConfiguration testConfiguration = new TestConfiguration();
+
+        protected SoftAssert softAsseert = new SoftAssert();
+
         /// <summary>
         ///   Given the url, username and password the request will be sent and the content will be returned
         ///   as a string.
@@ -36,6 +46,44 @@ namespace SogetiTestFramework.Rest
                 return response.Content.ToString();
             }
             return string.Format("The Rest Get API failed with a status of {0}", response.StatusCode);
+        }
+
+        /// <summary>
+        /// Given the url, username and password the request will be sent and the IRestResponse 
+        /// returned.
+        /// 
+        /// This is the same implementation of the Get method as below - other than we are 
+        /// returning the IRestResponse. Also note that the header parameter was added only 
+        /// to make the method signature different than the other Get method.
+        /// 
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="header"></param>
+        /// <returns>Content IRestResponse</returns>
+        public IRestResponse Get(string url, string username, string password, string header)
+        {
+            IRestResponse response = new RestResponse();
+
+            try
+            {
+                IRestClient client = new RestClient(url);
+
+                IRestRequest request = new RestRequest(Method.GET);
+                
+                client.Authenticator = new SimpleAuthenticator("username", username, "password", password);
+
+                response = client.Execute(request);
+            }
+            catch (Exception ex)
+            {
+                response.ResponseStatus = ResponseStatus.Error;
+                response.ErrorMessage = ex.Message;
+                response.ErrorException = ex;
+            }
+
+            return response;
         }
 
         /// <summary>

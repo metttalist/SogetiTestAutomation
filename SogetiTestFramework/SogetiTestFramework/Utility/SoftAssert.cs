@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using SogetiTestFramework.Helper;
 
 namespace SogetiTestFramework.Utility
 {
@@ -17,6 +18,8 @@ namespace SogetiTestFramework.Utility
     /// </copyright>
     public class SoftAssert
     {
+        private static readonly Log logger = new Log(typeof(SoftAssert));
+
         private SoftAssertChain softAssertChain = new SoftAssertChain();
 
         /// <summary>
@@ -271,9 +274,15 @@ namespace SogetiTestFramework.Utility
                 {
                     foreach (Exception failure in softAssertChain.GetFailures())
                     {
-                        Console.Error.WriteLine(failure);
+                        logger.Debug(string.Format("Exception: Failure: {0} Message: {1}", failure.ToString(), failure.Message));
                     }
-                    throw new Exception("There were " + softAssertChain.GetFailures().Count + " exception(s) during execution");
+
+                    string message = string.Format("There were {0} exception(s) during execution",
+                        softAssertChain.GetFailures().Count);
+
+                    logger.Debug(message);
+
+                    throw new Exception(message);
                 }
             }
             finally

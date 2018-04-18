@@ -9,7 +9,5 @@ namespace SampleTestProject.StepDefinition
     /// </summary>
     public class BaseSampleTestProjectStepDefinition : BaseStepDefinition
     {
-        protected string App1BaseUrl = "http://www.google.com";
-        protected string App2BaseUrl = "http://www.sogeti.com";
     }
 }

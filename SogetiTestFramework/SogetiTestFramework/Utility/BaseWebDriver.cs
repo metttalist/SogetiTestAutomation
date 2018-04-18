@@ -2,6 +2,10 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Safari;
+using SogetiTestFramework.Helper;
 
 namespace SogetiTestFramework.Utility
 {
@@ -25,18 +29,11 @@ namespace SogetiTestFramework.Utility
     /// </remarks>
     public class BaseWebDriver 
     {
-        
-        // The following objects are used to support the BaseWebDriver object
-        // The commented lines are placeholders for future development
+        private static readonly Log logger = new Log(typeof(BaseWebDriver));
+
+        protected TestConfiguration testConfiguration = new TestConfiguration();
 
         protected static IWebDriver driver;
-
-        // protected PropertiesManager properties;
-
-        // protected TestConfiguration config;
-
-        // private final static Log logger = new Log(AbstractPage.class);
-
 
         /// <summary>
         /// Default constructor. We will create the driver object. 
@@ -60,9 +57,51 @@ namespace SogetiTestFramework.Utility
         /// </summary>
         private void Init()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(60));
+            switch(testConfiguration.GetBrowserType().ToLower())
+            {
+                case Constants.BrowserTypeFirefox:
+                    driver = new FirefoxDriver();
+                    driver.Manage().Window.Maximize();
+                    driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(testConfiguration.GetBrowserTimeoutSeconds()));
+                    break;
+
+                case Constants.BrowserTypeChrome:
+                    driver = new ChromeDriver();
+                    driver.Manage().Window.Maximize();
+                    driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(testConfiguration.GetBrowserTimeoutSeconds()));
+                    break;
+
+                case Constants.BrowserTypeIE:
+                    driver = new InternetExplorerDriver();
+                    driver.Manage().Window.Maximize();
+                    driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(testConfiguration.GetBrowserTimeoutSeconds()));
+                    break;
+
+                case Constants.BrowserTypeEdge:
+                    driver = new EdgeDriver();
+                    driver.Manage().Window.Maximize();
+                    driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(testConfiguration.GetBrowserTimeoutSeconds()));
+                    break;
+
+                case Constants.BrowserTypeSafari:
+                    driver = new SafariDriver();
+                    driver.Manage().Window.Maximize();
+                    driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(testConfiguration.GetBrowserTimeoutSeconds()));
+                    break;
+
+                default:
+
+                    // The browser type from testConfiguration did not match any valid 
+                    // options - we will throw the exception
+                    
+                    string errorMessage = string.Format("Browser type is not valid. The browserType is " +
+                        "set in the configuration file or on the command line. browserType: {0}",
+                                    testConfiguration.GetBrowserType());
+
+                    logger.Error(errorMessage);
+
+                    throw new System.Exception(errorMessage); 
+            }
         }
 
         /// <summary>

@@ -1,10 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestSharp;
 using SogetiTestFramework.Helper;
 using SogetiTestFramework.Rest;
 
-namespace SampleAPITestProject
+namespace SampleTestProject.Unit
 {
+
+
+
 
     /// <summary>
     ///   This class can be used to test the GET api base method.
@@ -19,20 +23,23 @@ namespace SampleAPITestProject
     [TestClass]
     public class UnitTest1 : BaseRestClient
     {
+
         private static readonly Log logger = new Log(typeof(UnitTest1));
 
         [TestMethod]
-        public void TestGetMethod()
+        public void TestMethod1()
         {
-            logger.Debug(string.Format("Calling UnitTest1::TestGetMethod(). Testing REST Get Method", testConfiguration.GetApplicationURL()));
+            logger.Debug(string.Format("Calling Test API", testConfiguration.GetApplicationURL()));
 
             IRestResponse response = Get(testConfiguration.GetApplicationURL(),
                                     testConfiguration.GetUserName(),
-                                    testConfiguration.GetUserPassword(), 
+                                    testConfiguration.GetUserPassword(),
                                     "header");
 
-            softAsseert.AssertThatEquals(response.StatusCode, System.Net.HttpStatusCode.OK);
-            softAsseert.AssertThatContainsString(response.StatusDescription.ToString(), "200");
+            // System.Net.HttpStatusCode.OK
+            // Force the failure
+            softAsseert.AssertThatContainsString(response.StatusCode.ToString(), "OK");
+            softAsseert.AssertThatContainsString(response.StatusDescription.ToString(), "OK");
             softAsseert.ProcessAsserts();
         }
     }
