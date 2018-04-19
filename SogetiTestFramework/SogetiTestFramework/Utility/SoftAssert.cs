@@ -274,7 +274,7 @@ namespace SogetiTestFramework.Utility
                 {
                     foreach (Exception failure in softAssertChain.GetFailures())
                     {
-                        logger.Debug(string.Format("Exception: Failure: {0} Message: {1}", failure.ToString(), failure.Message));
+                        logger.Debug("Exception: Failure: {0} Message: {1}", failure.ToString(), failure.Message);
                     }
 
                     string message = string.Format("There were {0} exception(s) during execution",
@@ -282,10 +282,7 @@ namespace SogetiTestFramework.Utility
 
                     logger.Debug(message);
 
-                    // Disabled the softAssert due to issues with AppDomainUnloadedException
-                    // exception
-
-                    // throw new Exception(message);
+                    throw new Exception(message);
                 }
             }
             finally
