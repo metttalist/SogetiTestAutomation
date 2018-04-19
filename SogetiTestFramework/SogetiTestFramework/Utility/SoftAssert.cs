@@ -282,7 +282,10 @@ namespace SogetiTestFramework.Utility
 
                     logger.Debug(message);
 
-                    throw new Exception(message);
+                    // Disabled the softAssert due to issues with AppDomainUnloadedException
+                    // exception
+
+                    // throw new Exception(message);
                 }
             }
             finally
