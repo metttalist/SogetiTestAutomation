@@ -72,7 +72,10 @@ namespace SampleTestProject.StepDefinition
 
             foreach (var item in actualSearchResultItems)
             {
-                softAsseert.AssertThatContainsString(item.Text.ToLower(), searchedltItem.ToLower());
+                if (item.Displayed)
+                {
+                    softAsseert.AssertThatContainsString(item.Text.ToLower(), searchedltItem.ToLower());
+                }
                 logger.Debug("Validated that '{0}' title text contains '{1}' text", item.Text, searchedltItem);
             }
             softAsseert.ProcessAsserts();
