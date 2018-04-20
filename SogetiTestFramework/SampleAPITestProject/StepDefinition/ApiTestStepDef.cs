@@ -44,11 +44,6 @@ namespace SampleAPITestProject.StepDefinition
                                     testConfiguration.GetUserName(),
                                     testConfiguration.GetUserPassword(),
                                     "header");
-
-            // System.Net.HttpStatusCode.OK
-            softAsseert.AssertThatContainsString(response.StatusCode.ToString(), "OK");
-            softAsseert.AssertThatContainsString(response.StatusDescription.ToString(), "200");
-            softAsseert.ProcessAsserts();
         }
 
 

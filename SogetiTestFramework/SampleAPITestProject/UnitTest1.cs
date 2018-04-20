@@ -30,10 +30,6 @@ namespace SampleAPITestProject
                                     testConfiguration.GetUserName(),
                                     testConfiguration.GetUserPassword(), 
                                     "header");
-
-            softAsseert.AssertThatEquals(response.StatusCode, System.Net.HttpStatusCode.OK);
-            softAsseert.AssertThatContainsString(response.StatusDescription.ToString(), "200");
-            softAsseert.ProcessAsserts();
         }
     }
 }
