@@ -1,10 +1,7 @@
-﻿using RestSharp;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RestSharp;
 using SogetiTestFramework.Helper;
 using SogetiTestFramework.Rest;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using TechTalk.SpecFlow;
 
 namespace SampleAPITestProject.StepDefinition
@@ -40,10 +37,9 @@ namespace SampleAPITestProject.StepDefinition
 
             logger.Debug(string.Format("Calling Test API", testConfiguration.GetApplicationURL()));
 
-            IRestResponse response = baseRestClient.Get(testConfiguration.GetApplicationURL(),
+            string response = baseRestClient.Get(testConfiguration.GetApplicationURL(),
                                     testConfiguration.GetUserName(),
-                                    testConfiguration.GetUserPassword(),
-                                    "header");
+                                    testConfiguration.GetUserPassword());
         }
 
 

@@ -1,4 +1,4 @@
-﻿
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestSharp;
 using RestSharp.Authenticators;
 using SogetiTestFramework.Helper;
@@ -22,7 +22,7 @@ namespace SogetiTestFramework.Rest
     {
         private static readonly Log logger = new Log(typeof(BaseRestClient));
 
-        protected TestConfiguration testConfiguration = new TestConfiguration();
+        protected Utility.TestConfiguration testConfiguration = new Utility.TestConfiguration();
 
         protected SoftAssert softAsseert = new SoftAssert();
 
@@ -43,9 +43,12 @@ namespace SogetiTestFramework.Rest
 
             if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
+                Assert.IsTrue(true, "The Rest called returnd OK status.");
                 return response.Content.ToString();
             }
-            return string.Format("The Rest Get API failed with a status of {0}", response.StatusCode);
+
+            Assert.Fail(string.Format("The Rest Get API failed with a status of {0}", response.StatusCode));
+            return null;
         }
 
         /// <summary>
