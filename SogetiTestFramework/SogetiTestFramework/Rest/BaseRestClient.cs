@@ -43,7 +43,7 @@ namespace SogetiTestFramework.Rest
 
             if (response.StatusCode.Equals(HttpStatusCode.OK))
             {
-                Assert.IsTrue(true, "The Rest called returnd OK status.");
+                logger.Info("The Rest called returnd OK status.");
                 return response.Content.ToString();
             }
 
