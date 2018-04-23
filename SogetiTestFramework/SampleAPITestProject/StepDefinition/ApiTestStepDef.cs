@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RestSharp;
-using SogetiTestFramework.Helper;
+﻿using SogetiTestFramework.Helper;
 using SogetiTestFramework.Rest;
 using TechTalk.SpecFlow;
 
