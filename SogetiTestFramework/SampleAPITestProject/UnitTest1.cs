@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RestSharp;
 using SogetiTestFramework.Helper;
 using SogetiTestFramework.Rest;
 
@@ -26,10 +25,9 @@ namespace SampleAPITestProject
         {
             logger.Debug(string.Format("Calling UnitTest1::TestGetMethod(). Testing REST Get Method", testConfiguration.GetApplicationURL()));
 
-            IRestResponse response = Get(testConfiguration.GetApplicationURL(),
+            string response = Get(testConfiguration.GetApplicationURL(),
                                     testConfiguration.GetUserName(),
-                                    testConfiguration.GetUserPassword(), 
-                                    "header");
+                                    testConfiguration.GetUserPassword());
         }
     }
 }
