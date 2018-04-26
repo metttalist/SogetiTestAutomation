@@ -4,6 +4,8 @@ using OpenQA.Selenium;
 using System.Collections.ObjectModel;
 using SogetiTestFramework.Helper;
 
+using static SampleTestProject.Enum.SampleTestProjectGlobals;
+
 namespace SampleTestProject.StepDefinition
 {
     /// <summary>
@@ -51,6 +53,9 @@ namespace SampleTestProject.StepDefinition
             googleHomePage.GetSearchField().Clear();
             googleHomePage.GetSearchField().SendKeys(ItemToSearch);
             logger.Debug("Sent the text '{0}' to the element", ItemToSearch);
+
+            //Search item stored globally to test Globals mechanism.
+            globals.AddToList(SearchItems.ToString(), ItemToSearch);
         }
         /// <summary>
         /// Presses "Enter" key on a keyboard.
@@ -88,6 +93,7 @@ namespace SampleTestProject.StepDefinition
         public void Teardown()
         {
             googleHomePage.Teardown();
+            ValidateGlobals();
         }
     }
 }

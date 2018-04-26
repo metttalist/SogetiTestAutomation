@@ -19,6 +19,7 @@ namespace SogetiTestFramework.StepDefinition
         protected TestConfiguration testConfiguration = new TestConfiguration();
 
         protected SoftAssert softAsseert = new SoftAssert();
+        protected Globals globals = new Globals();
 
         public static readonly int ShortIntervalInMilliseconds = 1000;
         public static readonly int MediumIntervalInMilliseconds = 3000;
